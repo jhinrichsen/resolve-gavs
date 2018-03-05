@@ -2,8 +2,8 @@
 
 Resolve Maven wildcard gavs against a complete list of maven modules in concise
 notation. Concise notation builds a one line string instead of separate XML
-elements (group`:`artifact`:`version`:`classifier`@`packaging). Empty values can
-be left out, check out `main_test.go` for details.
+elements (group `:` artifact `:` version `:` classifier `@` packaging). Empty
+values can be left out, check out `main_test.go` for details.
 
 The complete list of Maven modules can be aggregated using e.g.
 
