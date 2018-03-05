@@ -1,13 +1,23 @@
 = resolve-gavs
 
-Resolve Maven wildcard gavs against a complete list of maven modules in concise notation
+Resolve Maven wildcard gavs against a complete list of maven modules in concise
+notation. Concise notation builds a one line string instead of separate XML
+elements (group`:`artifact`:`version`:`classifier`@`packaging). Empty values can
+be left out, check out `main_test.go` for details.
 
 The complete list of Maven modules can be aggregated using e.g.
 
 ----
-mvn \
+% mvn \
     -q \
     -Dexec.executable='echo' \
     -Dexec.args='${project.groupId}:${project.artifactId}:${project.version}:${project.classifier}@${project.packaging}' \
-    exec:exec
+    exec:exec \
+    > concise-gavs.txt
+----
+
+If you want to extract certain GAVs from this list, e.g. all `ear` files
+
+----
+% cat concise-gavs.txt | resolve-gavs @ear
 ----
